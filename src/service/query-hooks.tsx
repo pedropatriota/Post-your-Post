@@ -70,10 +70,11 @@ export const useUpdatePost = (
 ): UseMutateFunction<unknown, unknown, TBody, unknown> => {
   const queryClientParams = useQueryClient();
 
-  const postsClone = posts;
-  const postIndex = (postsClone || [])?.findIndex(post => post?.id === postId);
-
   const updatePostCache = (newData: TBody): void => {
+    const postsClone = posts;
+    const postIndex = (postsClone || [])?.findIndex(
+      post => post?.id === postId
+    );
     postsClone.splice(postIndex, 1, newData);
 
     queryClientParams.setQueryData([queryKeys.posts], [...postsClone]);

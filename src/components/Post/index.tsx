@@ -24,6 +24,7 @@ const Post = ({ id, title, user, body }: TPostData) => {
   };
 
   const getId = (id?: number) => {
+    console.log({ id });
     setPostId(id);
     menuRef?.current?.openModal();
   };
@@ -33,7 +34,7 @@ const Post = ({ id, title, user, body }: TPostData) => {
       <Style.PostContainer>
         <div>
           <span>Author:</span>
-          {user.name}
+          {user?.name}
         </div>
         <div>
           <span>Title:</span>
@@ -56,7 +57,7 @@ const Post = ({ id, title, user, body }: TPostData) => {
           />
         </div>
       </Style.PostContainer>
-      <Modal ref={menuRef} postId={postId} userId={user.id} />
+      <Modal ref={menuRef} postId={postId} userId={user?.id} />
     </>
   );
 };

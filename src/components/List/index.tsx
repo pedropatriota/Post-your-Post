@@ -6,13 +6,13 @@ import { TBody, TPostData, TUser } from "../../contracts.ts";
 const List = () => {
   const { posts, users } = useAppHelper();
 
-  const createDataForPosts: TPostData[] = posts?.map(
+  const createDataForPosts: TPostData[] = (posts || [])?.map(
     ({ id, title, body, userId }: TBody) => {
       return {
         id,
         title,
         body,
-        user: users.find((user: TUser) => user.id === userId),
+        user: users?.find((user: TUser) => user?.id === userId),
       };
     }
   );

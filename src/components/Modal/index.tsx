@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-import { TUser } from "../../contracts.ts";
+import { TBody, TUser } from "../../contracts.ts";
 import useApiHelper from "../../use-app-helper";
 import Form from "../Form";
 import * as Style from "./styles";
@@ -13,7 +13,9 @@ export type TModal = {
 
 // eslint-disable-next-line react/display-name
 const Modal = React.forwardRef(({ postId, userId }: TModal, ref) => {
-  const { users, post } = useApiHelper(postId);
+  const { users, posts } = useApiHelper(postId);
+
+  const getPostData = posts?.find((post: TBody) => post.id === postId);
 
   const [openModal, setOpenModal] = React.useState(false);
 
@@ -22,9 +24,9 @@ const Modal = React.forwardRef(({ postId, userId }: TModal, ref) => {
   const userData = users?.find((user: TUser) => user?.id === userId);
 
   const defaultValues = {
-    body: post?.body,
+    body: getPostData?.body,
     user: { value: userData?.id, label: userData?.name },
-    title: post?.title,
+    title: getPostData?.title,
   };
 
   React.useImperativeHandle(ref, () => ({
