@@ -65,11 +65,10 @@ export const useUsers = () => {
 };
 
 export const useUpdatePost = (
+  posts: TBody[],
   postId?: number
 ): UseMutateFunction<unknown, unknown, TBody, unknown> => {
   const queryClientParams = useQueryClient();
-
-  const { data: posts }: { data: TBody[] } = usePosts();
 
   const postsClone = posts;
   const postIndex = (postsClone || [])?.findIndex(post => post?.id === postId);

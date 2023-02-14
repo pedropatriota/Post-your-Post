@@ -16,9 +16,9 @@ export type TForm = {
 };
 
 const Form = ({ defaultValues, isEdit, postId, closeModal }: TForm) => {
-  const { createNewPost, users, useUpdatePost } = useAppHelper(postId);
+  const { createNewPost, users, useUpdatePost, posts } = useAppHelper(postId);
 
-  const updatePostById = useUpdatePost(postId);
+  const updatePostById = useUpdatePost(posts, postId);
   const updatePost = (data: TBody) => {
     return updatePostById(data);
   };
