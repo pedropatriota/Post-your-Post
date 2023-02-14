@@ -24,7 +24,6 @@ const Post = ({ id, title, user, body }: TPostData) => {
   };
 
   const getId = (id?: number) => {
-    console.log({ id });
     setPostId(id);
     menuRef?.current?.openModal();
   };

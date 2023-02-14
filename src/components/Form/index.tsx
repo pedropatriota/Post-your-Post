@@ -48,7 +48,7 @@ const Form = ({ defaultValues, isEdit, postId, closeModal }: TForm) => {
     const { title, body, user } = data;
     const newData = { title, body, userId: user?.value };
     const newDataEdited = { id: postId, title, body, userId: user?.value };
-    console.log(newDataEdited);
+
     if (isEdit) {
       updatePost(newDataEdited);
       closeModal?.();
