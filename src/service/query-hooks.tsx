@@ -72,12 +72,11 @@ export const useUpdatePost = (
   const { data: posts }: { data: TBody[] } = usePosts();
 
   const postsClone = posts;
-  const postIndex = postsClone?.findIndex(post => post.id === postId);
+  const postIndex = (postsClone || [])?.findIndex(post => post?.id === postId);
 
   const updatePostCache = (newData: TBody): void => {
     postsClone.splice(postIndex, 1, newData);
 
-    console.log({ newData, postsClone });
     queryClientParams.setQueryData([queryKeys.posts], [...postsClone]);
   };
 

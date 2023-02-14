@@ -24,15 +24,17 @@ const List = () => {
         margin: "0 auto",
       }}
     >
-      {createDataForPosts?.reverse()?.map(({ body, id, title, user }) => (
-        <Post
-          key={id || posts.length}
-          id={id}
-          title={title}
-          body={body}
-          user={user}
-        />
-      ))}
+      {(createDataForPosts?.reverse() || [])?.map(
+        ({ body, id, title, user }) => (
+          <Post
+            key={id || posts.length}
+            id={id}
+            title={title}
+            body={body}
+            user={user}
+          />
+        )
+      )}
     </ul>
   );
 };

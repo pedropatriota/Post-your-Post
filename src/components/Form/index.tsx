@@ -34,8 +34,6 @@ const Form = ({ defaultValues, isEdit, postId, closeModal }: TForm) => {
     defaultValues: { ...defaultValues },
   });
 
-  console.log({ defaultValues });
-
   React.useEffect(() => {
     if (defaultValues?.user?.value) {
       const { body, title, user } = defaultValues;
